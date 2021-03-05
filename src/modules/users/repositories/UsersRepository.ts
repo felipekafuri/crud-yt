@@ -10,6 +10,12 @@ class UsersRepository extends Repository<User> {
     return user
   }
 
+  public async findById(id: string): Promise<User | undefined> {
+    const user = await this.findOne({ id })
+
+    return user
+  }
+
   public async createUser({ email, password }: ICreateUserDTO): Promise<User> {
     const user = this.create({ email, password })
 
